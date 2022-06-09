@@ -33,6 +33,20 @@ class _EntradaSwitchState extends State<EntradaSwitch> {
               secondary: Icon(Icons.add_alert),
             ),
 
+            ElevatedButton(
+              child: Text(
+                "Salvar",
+                style: TextStyle(
+                  fontSize: 20
+                ),
+                
+              ),
+              onPressed: () {
+                if(_escolhaUsuario == null) print("Erro! Por favor escolha um dos valores!");
+                else print('Resultado: $_escolhaUsuario');
+              }
+            )
+
             
           ],
         ),
