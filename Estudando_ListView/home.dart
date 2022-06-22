@@ -9,7 +9,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  List _itens = [];
+  final List _itens = [];
 
   void _carregarItens(){
     for(int i = 0; i <= 10 ; i++){
@@ -39,6 +39,30 @@ class _HomeState extends State<Home> {
             return ListTile(
               title: Text(_itens[indice]['titulo']),
               subtitle: Text(_itens[indice]['subtitulo']),
+              onTap: () {
+                showDialog(
+                  context: context, 
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text('Título Alert Dialog ${indice}'),
+                      content: Text('Conteudo do Dialog'),
+                      titlePadding: EdgeInsets.all(15),
+                      titleTextStyle: TextStyle(color: Colors.green, fontSize: 20,),
+                      contentPadding: EdgeInsets.all(30),
+                      actions: [
+                        OutlinedButton(onPressed: () {Navigator.pop(context);}, child: Text('Não')),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          }, 
+                          child: Text('Sim')
+                        ),
+                      ],
+                      actionsPadding: EdgeInsets.only(right: 16),
+                    );
+                  }
+                );
+              },
             );
           }
         ) ,
